@@ -48,7 +48,7 @@ module.exports = {
 
     let desc = `Создан **${Bot.toMoscowTime(guild.createdAt)}**\n`
     if (!args[0]) desc += `Вы зашли сюда: **${Bot.toMoscowTime(message.member.joinedAt)}\n**`
-    desc += `Владелец: ${owner} **\`${owner.tag}\`**\n\n`;
+    //desc += `Владелец: ${owner} **\`${owner.tag}\`**\n\n`;
     desc += `Участников: **\`${guild.memberCount}\`**\n`;
     desc += `${Bot.emojis.online} \`${online}\` | ${Bot.emojis.dnd} \`${dnd}\` | ${Bot.emojis.idle} \`${idle}\` | ${Bot.emojis.offline} \`${offline}\`\n`;
     desc += `🌐 \`${browser}\` | 🖥️ \`${desktop}\` | 📱 \`${mobile}\` | ❔ \`${unknown}\`\n`;
