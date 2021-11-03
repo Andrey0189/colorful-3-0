@@ -9,7 +9,7 @@ module.exports = {
     if (args[0] && !guild) return Bot.err('Сервер не найден');
     if (!args[0]) guild = message.guild;
 
-    const owner = await message.guild.fetchOwner();
+    const owner = await Bot.client.users.cache.get(message.guild.ownerID);
 
     const types = ['NONE', 'LOW', 'MEDIUM', 'HIGH', 'VERY_HIGH']
     const translated = ['Нет', 'Нужен проверенный e-mail', 'Аккаунту должно быть больше 5 минут', 'Нужно быть на сервере больше 10 минут', 'Нужен подвтержденный номер телефона']
@@ -48,7 +48,7 @@ module.exports = {
 
     let desc = `Создан **${Bot.toMoscowTime(guild.createdAt)}**\n`
     if (!args[0]) desc += `Вы зашли сюда: **${Bot.toMoscowTime(message.member.joinedAt)}\n**`
-    desc += `Владелец: ${guild.owner} **\`${guild.owner.user.tag}\`**\n\n`;
+    desc += `Владелец: ${guild.owner} **\`${guild.owner.tag}\`**\n\n`;
     desc += `Участников: **\`${guild.memberCount}\`**\n`;
     desc += `${Bot.emojis.online} \`${online}\` | ${Bot.emojis.dnd} \`${dnd}\` | ${Bot.emojis.idle} \`${idle}\` | ${Bot.emojis.offline} \`${offline}\`\n`;
     desc += `🌐 \`${browser}\` | 🖥️ \`${desktop}\` | 📱 \`${mobile}\` | ❔ \`${unknown}\`\n`;
