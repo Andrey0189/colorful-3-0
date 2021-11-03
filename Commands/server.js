@@ -9,6 +9,8 @@ module.exports = {
     if (args[0] && !guild) return Bot.err('Сервер не найден');
     if (!args[0]) guild = message.guild;
 
+    const owner = await message.guild.fetchOwner();
+
     const types = ['NONE', 'LOW', 'MEDIUM', 'HIGH', 'VERY_HIGH']
     const translated = ['Нет', 'Нужен проверенный e-mail', 'Аккаунту должно быть больше 5 минут', 'Нужно быть на сервере больше 10 минут', 'Нужен подвтержденный номер телефона']
 
