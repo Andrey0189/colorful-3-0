@@ -69,6 +69,8 @@ class Bot {
 
         this.randomElement = arr => arr[Math.ceil(Math.random() * arr.length - 1)];
 
+        this.toMoscowTime = (time) => time.toLocaleString('ru-RU', {timeZone: 'Europe/Moscow', hour12: false}).replace(/\/|\./g, '-');
+
 
         this.client.on('message', message => {
             if (message.author.bot) return;
