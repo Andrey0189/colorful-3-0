@@ -34,7 +34,7 @@ class Bot {
             dm: '905410551994253352'
         }
 
-        _this.client.on('ready', () => {
+        this.client.on('ready', () => {
 
             this.footer = `<> with ❤ by ANDREY#2623`
             this.prefixes = ['=', `<@${this.client.user.id}>`];
@@ -67,8 +67,10 @@ class Bot {
             return titles[(number % 100 > 4 && number % 100 < 20)? 2 : cases[(number % 10 < 5)? number % 10 : 5]];  
         };
 
+        this.randomElement = arr => arr[Math.ceil(Math.random() * arr.length - 1)];
 
-        _this.client.on('message', message => {
+
+        this.client.on('message', message => {
             if (message.author.bot) return;
 
             if (!message.guild) {
