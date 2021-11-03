@@ -14,11 +14,11 @@ module.exports = {
             const ipinfo = await res.json();
             if(!ipinfo.error && res.ok) {
                 if(ipinfo.bogon) return message.channel.send("Не");
-                coordsForMap = ipinfo.loc.split(",");
+                coordsForMap = ipinfo.loc ? ipinfo.loc.split(",") : [0, 0];
                 const embed = new Bot.Discord.MessageEmbed()
                     .setTitle(ipinfo.ip)
                     .addField("Имя хоста", ipinfo.hostname ? ipinfo.hostname : "Нету", true)
-                    .addField("Местоположение", ipinfo.city + ", " + ipinfo.region + ", " + ipinfo.country + " :flag_" + ipinfo.country.toLowerCase() + ": (" + ipinfo.loc + ")", true)
+                    .addField("Местоположение", ipinfo.loc ? (ipinfo.city + ", " + ipinfo.region + ", " + ipinfo.country + " :flag_" + ipinfo.country.toLowerCase() + ": (" + ipinfo.loc + ")") : "Нету", true)
                     .addField("Интернет провайдер", ipinfo.org ? ipinfo.org : "Нету", true)
                     .addField("Почтовый код", ipinfo.postal ? ipinfo.postal : "Нету", true)
                     .addField("Временная зона", ipinfo.timezone ? ipinfo.timezone : "Нету", true)
