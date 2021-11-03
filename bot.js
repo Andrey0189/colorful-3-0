@@ -10,7 +10,7 @@ class Bot {
         this.Discord = Discord;
         this.fs = fs;
 
-        this.client = new Discord.Client({disableEveryone: true});
+        this.client = new Discord.Client({disableMentions: 'everyone'});
         this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag').then(() => delete process.env.BOT_TOKEN);
 
         this.name = 'Colorful';
