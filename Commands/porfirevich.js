@@ -1,6 +1,7 @@
 module.exports = {
     name: 'gentext',
     regex: /gen(text)?/,
+    args: ['<текст>'],
     desc: 'Генерация текста с помощью Порфирьевича',
     run: async (message, args) => {
         const fetch = require("node-fetch");
