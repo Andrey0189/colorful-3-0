@@ -1,7 +1,8 @@
 module.exports = {
     name: 'ipinfo',
     regex: /ip(info)?/,
-    desc: 'Информация про IP адрес',
+    args: ['<ip>'],
+    desc: 'Информация об IP адресе',
     run: async (message, args) => {
         const fetch = require("node-fetch");
         if(!process.env.IPINFO_TOKEN) return message.channel.send("<:fuckyou:892838002466881576>");
@@ -13,7 +14,7 @@ module.exports = {
             const res = await fetch("https://ipinfo.io/" + encodeURIComponent(args[0]) + "?token=" + process.env.IPINFO_TOKEN);
             const ipinfo = await res.json();
             if(!ipinfo.error && res.ok) {
-                if(ipinfo.bogon) return message.channel.send("Не");
+                if(ipinfo.bogon) return Bot.err('Не тут-то было!')
                 const coordsForMap = ipinfo.loc ? ipinfo.loc.split(",") : [0, 0];
                 const embed = new Bot.Discord.MessageEmbed()
                     .setTitle(ipinfo.ip)

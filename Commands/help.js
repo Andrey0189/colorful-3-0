@@ -20,7 +20,7 @@ module.exports = {
         .setDescription(`Напишите ${Bot.prefixes[0]}help **\`<название-команды>\`** для помощи по отдельной команде\n**\`<...>\`** - Обязательный параметр.\n**\`[...]\`** - Необязательный параметр.\n**\`|\`** - Оператор "или"`)
         .setDescription(cmdList)
         .setColor(Bot.colors.blurple)
-        .setFooter('e')
+        .setFooter(Bot.footer)
         await message.channel.send(embed);
 
       } else {

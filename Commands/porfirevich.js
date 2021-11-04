@@ -21,6 +21,7 @@ module.exports = {
                 .setTitle("Генерация Текста")
                 .addField(args.join(" "), args.join(" ") + choose(gen['replies']), true)
                 .setColor(Bot.colors.blurple)
+                .setFooter('Порфирьевич')
             await message.channel.send(embed)
         } else {
             await message.channel.send("Ошибка API")

@@ -49,7 +49,7 @@ class Bot {
 
         this.client.on('ready', () => {
 
-            this.footer = `<> with ❤ by ANDREY#2623`
+            this.footer = `${_this.name} ${this.version} <> with ❤`
             this.prefixes = ['=', `<@${this.client.user.id}>`];
 
             setInterval(() => _this.client.user.setActivity(`${_this.prefixes[0]}help | ${_this.client.guilds.cache.size} servers`, {type: 'PLAYING'}), 12e4);
