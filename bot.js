@@ -5,7 +5,7 @@ const fs = require('fs');
 
 class Bot {
     constructor() {
-        let _this = this;
+        const _this = this;
 
         this.Discord = Discord;
         this.fs = fs;
