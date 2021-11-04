@@ -15,22 +15,22 @@ module.exports = {
     const translated = ['Нет', 'Нужен проверенный e-mail', 'Аккаунту должно быть больше 5 минут', 'Нужно быть на сервере больше 10 минут', 'Нужен подвтержденный номер телефона']
 
 
-    let verifLvl
+    let verifyLvl;
     for (let i = 0; i < types.length; i++) {
-      if (types[i] === guild.verificationLevel) verifLvl = translated[i];
-    };
+      if (types[i] === guild.verificationLevel) verifyLvl = translated[i];
+    }
 
     let bans = await guild.fetchBans().catch(err => err);
     if (bans.name) bans = 'Недостаточно прав';
     else bans = bans.size;
 
-    calculateMembersStatus = (status) => guild.members.cache.filter(m => m.user.presence.status === status).size;
+    const calculateMembersStatus = (status) => guild.members.cache.filter(m => m.user.presence.status === status).size;
     const online = calculateMembersStatus('online');
     const dnd = calculateMembersStatus('dnd');
     const idle = calculateMembersStatus('idle');
     const offline = calculateMembersStatus('offline');
 
-    calculateMembersClientStatus = (state) => guild.members.cache.filter(m => m.user.presence.clientStatus && Object.keys(m.user.presence.clientStatus).find(key => key === state)).size;
+    const calculateMembersClientStatus = (state) => guild.members.cache.filter(m => m.user.presence.clientStatus && Object.keys(m.user.presence.clientStatus).find(key => key === state)).size;
     const browser = calculateMembersClientStatus('web');
     const desktop = calculateMembersClientStatus('desktop');
     const mobile = calculateMembersClientStatus('mobile');
@@ -39,7 +39,7 @@ module.exports = {
     const bots = guild.members.cache.filter(m => m.user.bot).size;
     const people = guild.memberCount - bots;
 
-    calculateChannels = (type) => guild.channels.cache.filter(ch => ch.type === type).size;
+    const calculateChannels = (type) => guild.channels.cache.filter(ch => ch.type === type).size;
     const text = calculateChannels('text');
     const voice = calculateChannels('voice');
 
@@ -58,7 +58,7 @@ module.exports = {
     desc += `Эмодзи: **\`${static + animated}\`**\n`;
     desc += `PNG: \`${static}\` | GIF: \`${animated}\`\n\n`;
     desc += `Ролей: **\`${guild.roles.cache.size}\`**\n\n`;
-    desc += `Уровень верификации: **${verifLvl}.**\n`;
+    desc += `Уровень верификации: **${verifyLvl}.**\n`;
     desc += `Количество банов: **\`${bans}\`**`;
 
     const embed = new Bot.Discord.MessageEmbed()
@@ -66,6 +66,6 @@ module.exports = {
     .setColor(Bot.colors.main)
     .setThumbnail(guild.iconURL({size: 1024, dynamic: true}))
     .setDescription(desc)
-    message.channel.send(embed);
+    await message.channel.send(embed);
   }
 };

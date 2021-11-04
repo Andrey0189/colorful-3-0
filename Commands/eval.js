@@ -3,10 +3,9 @@ module.exports = {
     private: true,
     run: async (message, args) => {
       try {
-        message.channel.send(`//Success ✅\n${eval(args.join(' '))}`, {code: 'js', split: '\n'});
+        await message.channel.send(`//Success ✅\n${eval(args.join(' '))}`, {code: 'js', split: '\n'});
       } catch (err) {
-        message.channel.send(`//Error ❎\n${err}`, {code: 'js'});
-      };
+        await message.channel.send(`//Error ❎\n${err}`, {code: 'js'});
+      }
     }
   };
-  

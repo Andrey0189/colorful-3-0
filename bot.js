@@ -11,7 +11,7 @@ class Bot {
         this.fs = fs;
 
         this.client = new Discord.Client({disableMentions: 'everyone'});
-        this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag');
+        this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag').then(() => console.log("Colorful 3.0 started!"));
 
         this.name = 'Colorful';
         this.version = '1.0.0';
@@ -38,11 +38,11 @@ class Bot {
 
             this.footer = `<> with ❤ by ANDREY#2623`
             this.prefixes = ['=', `<@${this.client.user.id}>`];
-            
+
             setInterval(() => _this.client.user.setActivity(`${_this.prefixes[0]}help | ${_this.client.guilds.cache.size} servers`, {type: 'PLAYING'}), 12e4);
             console.log(`${this.client.user.tag} is logged successfully.\nGuilds: ${this.client.guilds.cache.size}\nUsers: ${this.client.users.cache.size}`);
-            
-            
+
+
             fs.readdir('./Commands', (err, cmds) => {
                 if (err) throw err;
                 cmds.forEach(command => {
@@ -62,9 +62,9 @@ class Bot {
         });
 
 
-        this.declOfNum = (number, titles) => {  
-            const cases = [2, 0, 1, 1, 1, 2];  
-            return titles[(number % 100 > 4 && number % 100 < 20)? 2 : cases[(number % 10 < 5)? number % 10 : 5]];  
+        this.declOfNum = (number, titles) => {
+            const cases = [2, 0, 1, 1, 1, 2];
+            return titles[(number % 100 > 4 && number % 100 < 20)? 2 : cases[(number % 10 < 5)? number % 10 : 5]];
         };
 
         this.randomElement = arr => arr[Math.ceil(Math.random() * arr.length - 1)];
@@ -78,7 +78,7 @@ class Bot {
             if (!message.guild) {
                 const files = message.attachments.map(key => key.attachment)
                 return _this.client.channels.cache.get(_this.channels.dm).send(`${message.author} \`[${message.author.tag}]\`: ${message.content}`, {files: files});
-            };
+            }
 
             const msgPrefix = _this.prefixes.find(p => message.content.toLowerCase().startsWith(p));
             if (!msgPrefix) return;
@@ -92,7 +92,7 @@ class Bot {
             // this.suc = (desc) => message.channel.send(this.emojis.yes + ' | ' + desc)
 
             const cmd = _this.commands.find(c => command.match(new RegExp(`^${c.regex.toString().slice(1, -1)}$`)));
-            
+
             if (cmd && (!cmd.private || _this.whitelist.includes(message.author.id))) {
                 cmd.run(message, args);
 
@@ -103,9 +103,9 @@ class Bot {
                 .setColor(_this.colors.main)
                 .setFooter(message.guild.name, message.guild.iconURL());
                 _this.client.channels.cache.get(_this.channels.commands).send(embed);
-            };
+            }
         });
     };
-};
+}
 
 global.Bot = new Bot();

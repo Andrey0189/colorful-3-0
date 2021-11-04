@@ -2,7 +2,7 @@ module.exports = {
     name: 'ipinfo',
     regex: /ip(info)?/,
     desc: 'Информация про IP адрес',
-    run: (message, args) => {
+    run: async (message, args) => {
         const fetch = require("node-fetch");
         if(!process.env.IPINFO_TOKEN) return message.channel.send("<:fuckyou:892838002466881576>");
         function validateIp(ip) {
@@ -14,7 +14,7 @@ module.exports = {
             const ipinfo = await res.json();
             if(!ipinfo.error && res.ok) {
                 if(ipinfo.bogon) return message.channel.send("Не");
-                coordsForMap = ipinfo.loc ? ipinfo.loc.split(",") : [0, 0];
+                const coordsForMap = ipinfo.loc ? ipinfo.loc.split(",") : [0, 0];
                 const embed = new Bot.Discord.MessageEmbed()
                     .setTitle(ipinfo.ip)
                     .addField("Имя хоста", ipinfo.hostname ? ipinfo.hostname : "Нету", true)
@@ -24,11 +24,11 @@ module.exports = {
                     .addField("Временная зона", ipinfo.timezone ? ipinfo.timezone : "Нету", true)
                     .setImage("https://tyler-demo.herokuapp.com/?greyscale=False&lat=" + coordsForMap[0] + "&lon=" + coordsForMap[1] + "&zoom=15&width=600&height=400")
                     .setColor(Bot.colors.blurple)
-                message.channel.send(embed)
+                await message.channel.send(embed)
             } else {
-                message.channel.send("Ошибка API")
+                await message.channel.send("Ошибка API")
             }
         }
-        getIpInfo()
+        await getIpInfo()
     }
 }

@@ -2,7 +2,7 @@ module.exports = {
     name: 'anekdot',
     regex: /a(nek)?d(ot)?/,
     desc: 'Случайный анекдот',
-    run: (message, args) => {
+    run: async (message, args) => {
         const fetch = require("node-fetch");
         async function anekdot() {
             const res = await fetch("https://www.anekdot.ru/rss/randomu.html", { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0" } });
@@ -13,11 +13,11 @@ module.exports = {
                     .setTitle("Анекдот")
                     .setDescription(anek.slice(0, 4096))
                     .setColor(Bot.colors.blurple)
-                message.channel.send(embed)
+                await message.channel.send(embed)
             } else {
-                message.channel.send("Ошибка API")
+                await message.channel.send("Ошибка API")
             }
         }
-        anekdot()
+        await anekdot()
     }
 }
