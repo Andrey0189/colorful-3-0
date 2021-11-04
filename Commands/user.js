@@ -19,7 +19,7 @@ module.exports = {
       else finalStates = Object.keys(user.presence.clientStatus).map(state => {
         for (let i = 0; i < clientStatesNames.length; i++) {
           if (state === clientStatesNames[i]) return translatedStates[i]
-        };
+        }
       })
 
       let desc = `${user} **\`${user.tag}\`**\n`;
