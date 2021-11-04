@@ -38,6 +38,15 @@ class Bot {
             dm: '905410551994253352'
         }
 
+        this.emojis = {
+            yes: '<:tickYes:847376681064464425>',
+            no: '<:tickNo:847376704175603743>',
+            offline: '<:offline:905584317613342781>',
+            online: '<:online:905584347388715048>',
+            idle: '<:idle:905584270876229662>',
+            dnd: '<:dnd:905584225544208385>'
+        };
+
         this.client.on('ready', () => {
 
             this.footer = `<> with ❤ by ANDREY#2623`
@@ -96,8 +105,8 @@ class Bot {
             const args = message.content.slice(msgPrefix.length).trim().split(/ +/g);
             const command = args.shift().toLowerCase();
 
-            this.err = (desc) => message.channel.send(this.emojis.no + ' | ' + desc)
-            this.suc = (desc) => message.channel.send(this.emojis.yes + ' | ' + desc)
+            this.err = (desc) => message.channel.send(_this.emojis.no + ' | ' + desc)
+            this.suc = (desc) => message.channel.send(_this.emojis.yes + ' | ' + desc)
 
             const cmd = _this.commands.find(c => command.match(new RegExp(`^${c.regex.toString().slice(1, -1)}$`)));
 
