@@ -11,7 +11,7 @@ class Bot {
         this.fs = fs;
 
         this.client = new Discord.Client({disableMentions: 'everyone'});
-        this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag').then(() => console.log("Colorful 3.0 started!"));
+        this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag');//.then(() => console.log("Colorful 3.0 started!"));
 
         this.name = 'Colorful';
         this.version = '1.0.0';
@@ -22,9 +22,13 @@ class Bot {
             blurple: '7289da'
         }
 
-        this.creator = '242975403512168449'
+        /* this.creator = ['242975403512168449', '499271333033672714',
+                        '340825658865221634', '868794301537206273',
+                        '756850630840156236']; */
 
-        this.whitelist = [this.creator];
+        this.whitelist = ['242975403512168449', '499271333033672714',
+            '340825658865221634', '868794301537206273',
+            '756850630840156236'];
 
         this.server = 'https://discord.gg/hjkHm5mxKC'
 
