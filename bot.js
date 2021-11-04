@@ -11,7 +11,7 @@ class Bot {
         this.fs = fs;
 
         this.client = new Discord.Client({disableMentions: 'everyone'});
-        this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag');//.then(() => console.log("Colorful 3.0 started!"));
+        this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag');
 
         this.name = 'Colorful';
         this.version = '1.0.0';
@@ -74,6 +74,10 @@ class Bot {
         this.randomElement = arr => arr[Math.ceil(Math.random() * arr.length - 1)];
 
         this.toMoscowTime = (time) => time.toLocaleString('ru-RU', {timeZone: 'Europe/Moscow', hour12: false}).replace(/\/|\./g, '-');
+
+        this.multipleReact = async (message, arr) => {
+          if (0 in arr) await message.react(arr.shift()).then(() => _this.multipleReact(message, arr).catch());
+        };
 
 
         this.client.on('message', message => {
