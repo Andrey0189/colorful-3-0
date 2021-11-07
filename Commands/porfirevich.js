@@ -33,7 +33,7 @@ module.exports = {
         const reactCollector = new Bot.Discord.ReactionCollector(botsMsg, (reaction, user) => user.id === message.author.id, {time: 3e5});
 
         reactCollector.on('collect', async (reaction, user) => {
-        await reaction.remove(user);
+        await reaction.users.remove(user);
         if (reaction.emoji.name === '🔁') {
           generated = await gentext(args.join(' '));
           embed.setDescription(`**${args.join(" ")}** ${generated}`);
