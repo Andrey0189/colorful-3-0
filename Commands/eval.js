@@ -4,7 +4,7 @@ module.exports = {
     run: async (message, args) => {
       try {
 
-        const output = eval(`const verySussyFunction = async () => { ${args.join(' ')} }; verySussyFunction();`);
+        const output = eval(`const verySussyFunction = async () => { return ${args.join(' ')} }; verySussyFunction();`);
 
         await message.channel.send(`//Success ✅\n${output}`, {code: 'js', split: '\n'});
       } catch (err) {
