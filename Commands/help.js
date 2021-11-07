@@ -11,7 +11,7 @@ module.exports = {
       const creators = Bot.creators.map(async c => {
         const user = await Bot.client.users.fetch(c.id, 1, 1);
         return user.tag;
-      };
+      });
 
       creators.join(', ');
 
