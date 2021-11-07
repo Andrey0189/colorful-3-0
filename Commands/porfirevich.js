@@ -19,7 +19,7 @@ module.exports = {
         const gen = await res.json();
         if(!gen.error && res.ok) {
             const embed = new Bot.Discord.MessageEmbed()
-                .setTitle(''Генерация Текста'')
+                .setTitle('Генерация Текста')
                 .setDescription(`**${args.join(" ")}** ${choose(gen['replies'])}`)
                 .setColor(Bot.colors.blurple)
                 .setFooter('Порфирьевич')
