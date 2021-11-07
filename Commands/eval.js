@@ -4,9 +4,9 @@ module.exports = {
     run: async (message, args) => {
       try {
 
-        const output = eval("(async () => {" + args.join(' ') + "})().then(console.log)");
+        //const output = eval("(async () => {" + args.join(' ') + "})()");
 
-        await message.channel.send(`//Success ✅\n${JSON.stringify(output, null, 2)}`, {code: 'js', split: '\n'});
+        await message.channel.send(`//Success ✅\n${eval(args.join(' '))}`, {code: 'js', split: '\n'});
       } catch (err) {
         await message.channel.send(`//Error ❎\n${err}`, {code: 'js'});
       }
