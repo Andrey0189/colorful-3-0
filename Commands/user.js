@@ -6,10 +6,10 @@ module.exports = {
     example: 'user @чел#1234',
     run: async (message, args) => {
       const matchArgs = new RegExp(args[0], 'i');
-      let user = message.mentions.users.first() || Bot.client.users.cache.find(u => u.id === args[0] || (args[0] && u.tag.match(matchArgs)));
-      if (args[0] && !user) return Bot.err('Пользователь не найден');
-      if (!args[0]) user = message.author;
-      const member = message.guild.member(user)
+      const user = message.mentions.users.first() || await Bot.client.users.fetch(args[0], 1, 1) || message.author
+
+      if (!user) return Bot.err('Пользователь не найден');
+      const member = message.guild.member(user);
 
       const translatedStates = ['Браузера 🌐', 'Клиента 🖥️', 'Телефона 📱'];
       const clientStatesNames = ['web', 'desktop', 'mobile'];
