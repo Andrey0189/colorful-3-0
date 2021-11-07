@@ -20,8 +20,6 @@ module.exports = {
           else return 'Ошибка API';
         };
 
-
-        if(!gen.error && res.ok) {
         const embed = new Bot.Discord.MessageEmbed()
         .setTitle('Генерация Текста')
         .setDescription(`**${args.join(" ")}** ${gentext(args.join(' '))}`)
@@ -29,4 +27,4 @@ module.exports = {
         .setFooter('Порфирьевич', 'https://media.discordapp.net/attachments/520187790282063873/906998259233460284/porf.png')
         await message.channel.send(embed)
     }
-}
+};
