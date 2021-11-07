@@ -30,16 +30,16 @@ module.exports = {
         const botsMsg = await message.channel.send(embed);
         await Bot.multipleReact(botsMsg, ['🔁', '⏭️']);
 
-        const reactCollector = new Bot.Discord.ReactionCollector(botsMsg, r => r.users.find(u => u.id === message.author.id), {time: 3e5});
+        const reactCollector = new Bot.Discord.ReactionCollector(botsMsg, (reaction, user) => user.id === message.author.id, {time: 3e5});
 
-        reactCollector.on('collect', async (reaction) => {
-        await reaction.remove(message.author);
+        reactCollector.on('collect', async (reaction, user) => {
+        await reaction.remove(user);
         if (reaction.emoji.name === '🔁') {
           generated = await gentext(args.join(' '));
           embed.setDescription(`**${args.join(" ")}** ${generated}`);
           botsMsg.edit({embed: embed});
         } else if (reaction.emoji.name === '⏭️') {
-          
+
         };
       });
     }
