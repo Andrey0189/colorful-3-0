@@ -8,10 +8,10 @@ module.exports = {
     module: 'util',
     run: async (message, args) => {
       let cmdList = Bot.commands.filter(c => !c.private && !c.hidden);
-      const creators = Bot.creators.map(async c => {
+      const creators = await Promise.all(Bot.creators.map(async c => {
         const user = await Bot.client.users.fetch(c.id, 1, 1);
         return user.tag;
-      }).join(', ');
+      })).join(', ');
 
       if (!args[0]) {
         await message.channel.send(`Привет.\n\n**Colorful** - это бот для Вашего сервера с несколькими полезными функциями\nНа данный момент у меня **\`${cmdList.length}\`** ${Bot.declOfNum(cmdList.length, ['команда', 'команды', 'команд'])}\n\n**\`${Bot.prefixes[0]}help commands\`**\nСписок модулей команд.\n\n**\`${creators}\`**\nСоздатели бота.\n\n⚠️ Это бета-версия версия бота, поэтому могут встречаться баги. Напишите разработчику, если вы нашли баг\n\nНаш сервер: ${Bot.server}`)
