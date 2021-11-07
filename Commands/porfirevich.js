@@ -7,7 +7,7 @@ module.exports = {
         const fetch = require("node-fetch");
 
         const gentext = async (args) => {
-          const body = {prompt: args, length: 30};
+          const body = {prompt: args, length: 150};
           const res = await fetch("https://pelevin.gpt.dobro.ai/generate/", {
               method: 'POST',
               body: JSON.stringify(body),
