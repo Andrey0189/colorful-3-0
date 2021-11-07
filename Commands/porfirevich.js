@@ -22,7 +22,7 @@ module.exports = {
                 .setTitle('Генерация Текста')
                 .setDescription(`**${args.join(" ")}** ${choose(gen['replies'])}`)
                 .setColor(Bot.colors.blurple)
-                .setFooter('Порфирьевич')
+                .setFooter('Порфирьевич', 'https://media.discordapp.net/attachments/520187790282063873/906998259233460284/porf.png')
             await message.channel.send(embed)
         } else {
             await message.channel.send("Ошибка API")
