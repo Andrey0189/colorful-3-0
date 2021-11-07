@@ -33,14 +33,21 @@ module.exports = {
         const reactCollector = new Bot.Discord.ReactionCollector(botsMsg, (reaction, user) => user.id === message.author.id, {time: 3e5});
 
         reactCollector.on('collect', async (reaction, user) => {
-        await reaction.users.remove(user);
-        if (reaction.emoji.name === '🔁') {
-          generated = await gentext(args.join(' '));
-          embed.setDescription(`**${args.join(" ")}** ${generated}`);
-          botsMsg.edit({embed: embed});
-        } else if (reaction.emoji.name === '⏭️') {
 
-        };
-      });
+          await reaction.users.remove(user);
+
+          if (reaction.emoji.name === '🔁') {
+            generated = await gentext(args.join(' '));
+            embed.setDescription(`**${args.join(" ")}** ${generated}`);
+            botsMsg.edit({embed: embed});
+          }
+
+          else if (reaction.emoji.name === '⏭️') {
+            const newArgs = args.join(' ') + generated
+            generated = await gentext(newArgs);
+            embed.setDescription(`**${newArgs}** ${generated}`);
+            botsMsg.edit({embed: embed});
+          };
+       });
     }
 };
