@@ -6,7 +6,7 @@ module.exports = {
 
         const output = eval("(async () => {" + args.join(' ') + "})()");
 
-        await message.channel.send(`//Success ✅\n${output}`, {code: 'js', split: '\n'});
+        await message.channel.send(`//Success ✅\n${JSON.stringify(output, null, 2)}`, {code: 'js', split: '\n'});
       } catch (err) {
         await message.channel.send(`//Error ❎\n${err}`, {code: 'js'});
       }
