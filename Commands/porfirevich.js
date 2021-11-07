@@ -10,7 +10,7 @@ module.exports = {
             return arr[index];
         }
 
-        const body = {prompt: args.join(" "), length: 1};
+        const body = {prompt: args.join(" "), length: 2};
         const res = await fetch("https://pelevin.gpt.dobro.ai/generate/", {
             method: 'POST',
             body: JSON.stringify(body),
