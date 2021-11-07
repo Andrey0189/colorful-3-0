@@ -20,11 +20,12 @@ module.exports = {
           else return 'Ошибка API';
         };
 
-        let generated = await gentext(args.join(' '))
+        let startedText = args.join(' ');
+        let generated = await gentext(startedText);
 
         let embed = new Bot.Discord.MessageEmbed()
         .setTitle('Генерация Текста')
-        .setDescription(`**${args.join(" ")}** ${generated}`)
+        .setDescription(`**${startedText}** ${generated}`)
         .setColor(Bot.colors.blurple)
         .setFooter('Порфирьевич', 'https://media.discordapp.net/attachments/520187790282063873/906998259233460284/porf.png')
         const botsMsg = await message.channel.send(embed);
@@ -37,15 +38,15 @@ module.exports = {
           await reaction.users.remove(user);
 
           if (reaction.emoji.name === '🔁') {
-            generated = await gentext(args.join(' '));
-            embed.setDescription(`**${args.join(" ")}** ${generated}`);
+            generated = await gentext(startedText);
+            embed.setDescription(`**${startedText}** ${generated}`);
             botsMsg.edit({embed: embed});
           }
 
           else if (reaction.emoji.name === '⏭️') {
-            const newArgs = args.join(' ') + generated
-            generated = await gentext(newArgs);
-            embed.setDescription(`**${newArgs}** ${generated}`);
+            startedText = startedText + generated;
+            generated = await gentext(startedText);
+            embed.setDescription(`**${startedText}** ${generated}`);
             botsMsg.edit({embed: embed});
           };
        });
