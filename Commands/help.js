@@ -14,7 +14,7 @@ module.exports = {
       }));
 
       if (!args[0]) {
-        await message.channel.send(`Привет.\n\n**Colorful** - это бот для Вашего сервера с несколькими полезными функциями\nНа данный момент у меня **\`${cmdList.length}\`** ${Bot.declOfNum(cmdList.length, ['команда', 'команды', 'команд'])}\n\n**\`${Bot.prefixes[0]}help commands\`**\nСписок модулей команд.\n\n**\`${creators.join(', ')}\`**\Разработчики бота.\n\n⚠️ Это бета-версия версия, поэтому могут встречаться баги. Напишите разработчику, если вы нашли баг\n\nНаш сервер: ${Bot.server}`)
+        await message.channel.send(`Привет.\n\n**Colorful** - это бот для Вашего сервера с несколькими полезными функциями\nНа данный момент у меня **\`${cmdList.length}\`** ${Bot.declOfNum(cmdList.length, ['команда', 'команды', 'команд'])}\n\n**\`${Bot.prefixes[0]}help commands\`**\nСписок команд.\n\n**\`${creators.join(', ')}\`**\nРазработчики бота.\n\n⚠️ Это бета-версия версия, поэтому могут встречаться баги. Напишите разработчику, если вы нашли баг\n\nНаш сервер: ${Bot.server}`)
 
       } else if (args[0] === 'commands') {
         cmdList = cmdList.map(cmd => `◽ **${Bot.prefixes[0] + cmd.name} ${cmd.args?`\`${cmd.args.join(' ')}\``:''} -** ${cmd.desc}`);
