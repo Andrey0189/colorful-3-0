@@ -8,11 +8,21 @@ module.exports = {
       const matchArgs = new RegExp(args[0], 'i');
       let user = message.mentions.users.first() || message.guild.members.cache.find(m => m.user.tag.match(matchArgs));
 
+      console.log('start')
+      console.log(user)
+
       try {
         if (!user) user = await Bot.client.users.fetch(args[0]);
+        console.log('try')
+        console.log(user)
       } catch {
         user = message.author;
+        console.log('catch')
+        console.log(user)
       }
+
+      console.log('end')
+      console.log(user)
 
       const member = message.guild.member(user);
 
