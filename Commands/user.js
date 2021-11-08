@@ -9,7 +9,7 @@ module.exports = {
       let member = message.mentions.members.first() || message.guild.members.cache.find(m => args[0] && m.user.tag.match(matchArgs));
 
       try {
-        if (!member && args[0]) member = message.guild.member(await Bot.client.users.fetch(args[0]));
+        if (!member && args[0]) member = message.guild.member(await Bot.client.users.fetch(args[0], 1, 1));
       } catch {
         return Bot.err('Пользователь не найден');
       }
