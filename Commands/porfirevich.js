@@ -35,15 +35,15 @@ module.exports = {
 
         reactCollector.on('collect', async (reaction, user) => {
 
-          await reaction.users.remove(user);
-
           if (reaction.emoji.name === '🔁') {
+            await reaction.users.remove(user);
             generated = await gentext(startedText);
             embed.setDescription(`**${startedText}** ${generated}`);
             botsMsg.edit({embed: embed});
           }
 
           else if (reaction.emoji.name === '⏭️') {
+            await reaction.users.remove(user);
             startedText = startedText + generated;
             generated = await gentext(startedText);
             embed.setDescription(`**${startedText}** ${generated}`);
