@@ -24,7 +24,7 @@ module.exports = {
 
       const states = member.user.presence.clientStatus? Object.keys(member.user.presence.clientStatus).map(key => statesTranslation[key]) : ['Неизвестно или оффлайн ❔'];
 
-      let desc = `${member} ${Bot.emojis[member.user.presence.clientStatus? Object.keys(member.user.presence.clientStatus[0] : 'offline']} **\`${member.user.tag}\`**\n`;
+      let desc = `${member} ${Bot.emojis[member.user.presence.clientStatus? Object.keys(member.user.presence.clientStatus)[0] : 'offline']} **\`${member.user.tag}\`**\n`;
       desc += `Аккаунт создан: **${Bot.toMoscowTime(member.user.createdAt)}**\n`;
       if (member) desc += `Зашел на сервер: **${Bot.toMoscowTime(member.joinedAt)}**\n`;
       desc += `\nСидит с: **${states.join(', ')}**\n`
