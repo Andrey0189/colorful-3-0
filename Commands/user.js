@@ -6,13 +6,28 @@ module.exports = {
     example: 'user @чел#1234',
     run: async (message, args) => {
       const matchArgs = new RegExp(args[0], 'i');
-      const user = message.mentions.users.first() || await Bot.client.users.fetch(args[0], 1, 1) || message.author
+      let user = message.mentions.users.first() || message.guild.members.find(m => m.user.tag.match(matchArgs));
 
-      if (!user) return Bot.err('Пользователь не найден');
+      try {
+        if (!user && args[0]) user = await Bot.client.users.fetch(args[0]);
+        else if (!user && args[0]) user = message.author;
+      } catch {
+        return Bot.err('Пользователь не найден');
+      }
+
       const member = message.guild.member(user);
 
       const translatedStates = ['Браузера 🌐', 'Клиента 🖥️', 'Телефона 📱'];
       const clientStatesNames = ['web', 'desktop', 'mobile'];
+
+      const presenceStates = {
+        web: 'Браузера 🌐',
+        desktop: 'Клиента 🖥️',
+        mobile: 'Телефона 📱',
+        null: 'Неизвестно или оффлайн ❔'
+      };
+
+      const userState = presenceStates[user.presence.clientStatus];
 
       let finalStates;
       if (!user.presence.clientStatus) finalStates = ['Неизвестно или оффлайн ❔'];
@@ -25,7 +40,7 @@ module.exports = {
       let desc = `${user} **\`${user.tag}\`**\n`;
       desc += `Аккаунт создан: **${Bot.toMoscowTime(user.createdAt)}**\n`;
       if (member) desc += `Зашел на сервер: **${Bot.toMoscowTime(member.joinedAt)}**\n`;
-      desc += `\nСидит с: **${finalStates.join(', ')}**\n`
+      desc += `\nСидит с: **${userState}**\n`
 
       const embed = new Bot.Discord.MessageEmbed()
       .setAuthor(`Пользователь ${user.tag}`, user.avatarURL())
