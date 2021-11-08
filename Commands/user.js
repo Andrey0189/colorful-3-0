@@ -8,6 +8,9 @@ module.exports = {
       const matchArgs = new RegExp(args[0], 'i');
       let user = message.mentions.users.first() || message.guild.members.cache.find(m => args[0] && m.user.tag.match(matchArgs));
 
+      // Теперь пойми блин что тут написано
+      if (user && !user.tag) user = user.user;
+
       try {
         if (!user && args[0]) user = await Bot.client.users.fetch(args[0]);
       } catch {
