@@ -6,7 +6,7 @@ module.exports = {
     example: 'user @чел#1234',
     run: async (message, args) => {
       const matchArgs = new RegExp(args[0], 'i');
-      let user = message.mentions.users.first() || message.guild.members.cache.find(m => m.user.tag.match(matchArgs));
+      let user = message.mentions.users.first() || message.guild.members.find(m => m.user.tag.match(matchArgs));
 
       try {
         if (!user && args[0]) user = await Bot.client.users.fetch(args[0]);
@@ -20,15 +20,6 @@ module.exports = {
       const translatedStates = ['Браузера 🌐', 'Клиента 🖥️', 'Телефона 📱'];
       const clientStatesNames = ['web', 'desktop', 'mobile'];
 
-      const presenceStates = {
-        web: 'Браузера 🌐',
-        desktop: 'Клиента 🖥️',
-        mobile: 'Телефона 📱',
-        null: 'Неизвестно или оффлайн ❔'
-      };
-
-      const userState = presenceStates[user.presence.clientStatus];
-
       let finalStates;
       if (!user.presence.clientStatus) finalStates = ['Неизвестно или оффлайн ❔'];
       else finalStates = Object.keys(user.presence.clientStatus).map(state => {
@@ -40,7 +31,7 @@ module.exports = {
       let desc = `${user} **\`${user.tag}\`**\n`;
       desc += `Аккаунт создан: **${Bot.toMoscowTime(user.createdAt)}**\n`;
       if (member) desc += `Зашел на сервер: **${Bot.toMoscowTime(member.joinedAt)}**\n`;
-      desc += `\nСидит с: **${userState}**\n`
+      desc += `\nСидит с: **${finalStates.join(', ')}**\n`
 
       const embed = new Bot.Discord.MessageEmbed()
       .setAuthor(`Пользователь ${user.tag}`, user.avatarURL())
