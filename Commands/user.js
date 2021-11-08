@@ -6,7 +6,7 @@ module.exports = {
     example: 'user @чел#1234',
     run: async (message, args) => {
       const matchArgs = new RegExp(args[0], 'i');
-      let user = message.mentions.users.first() || message.guild.members.find(m => m.user.tag.match(matchArgs));
+      let user = message.mentions.users.first() || message.guild.members.cache.find(m => m.user.tag.match(matchArgs));
 
       try {
         if (!user && args[0]) user = await Bot.client.users.fetch(args[0]);
