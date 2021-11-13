@@ -2,7 +2,7 @@ module.exports = {
   name: 'info',
   regex: /info/,
   desc: 'Информация о боте',
-  run: (message) => {
+  run: async (message) => {
     const creators = Bot.creators.map(id => `**${Bot.client.users.cache.get(id)}, \`${Bot.client.users.cache.get(id).tag}\`**`);
 
     const embed = new Bot.Discord.MessageEmbed()
