@@ -19,7 +19,9 @@ class Bot {
         this.commands = [];
 
         this.colors = {
-            blurple: '7289da'
+            blurple: '7289da',
+            green: '77b255',
+            red: 'da2f47'
         }
 
         this.creators = ['242975403512168449', '499271333033672714',
