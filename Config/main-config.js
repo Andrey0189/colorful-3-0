@@ -1,4 +1,4 @@
-const Config = {
+  {
         name: 'Colorful',
         version: '1.0.0',
 
@@ -32,5 +32,3 @@ const Config = {
             dnd: '<:dnd:905584225544208385>'
         }
     };
-
-global.Config = Config;

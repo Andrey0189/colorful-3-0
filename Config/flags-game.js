@@ -1,8 +1,4 @@
-class Flags {
-    constructor() {
-        const _this = this;
-
-        this.list = [
+        [
             {
                 "name": "Австралия",
                 "code": "au"
@@ -790,8 +786,3 @@ class Flags {
                 "code": "tw"
             }
         ]
-
-    };
-}
-
-global.Flags = new Flags();
