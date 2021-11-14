@@ -48,6 +48,10 @@ class Bot {
             dnd: '<:dnd:905584225544208385>'
         };
 
+        this.minigamePlayers = {
+            "flags": []
+        }
+
         this.client.on('ready', () => {
 
             this.footer = `${_this.name} ${this.version} <> with ❤`
