@@ -1,6 +1,6 @@
-  {
+  module.exports = {
         name: 'Colorful',
-        //version: '1.0.0',
+        version: '1.0.0',
 
         colors: {
             blurple: '7289da',
