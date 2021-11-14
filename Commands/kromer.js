@@ -6,7 +6,7 @@ module.exports = {
         const dir = 'Images/Kromer/';
         const filesLength = Bot.fs.readdirSync(dir).length;
         await message.channel.send({
-          files: [`${dir}${Func.random(1, filesLength)}.png`]
+          files: [`${dir}${Func.random(1, filesLength)}.gif`]
         });
     }
 }
