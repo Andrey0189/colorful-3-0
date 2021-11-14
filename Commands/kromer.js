@@ -8,5 +8,5 @@ module.exports = {
         await message.channel.send({
           files: [`${dir}${Bot.random(1, filesLength)}.png`]
         });
-    };
+    }
 }
