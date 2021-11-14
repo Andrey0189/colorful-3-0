@@ -3,6 +3,7 @@ module.exports = {
     regex: /flag(s)?/,
     args: ['[количество флагов от 2 до 10 (по умолчанию 3)]'],
     desc: 'Миниигра "Угадай страну по флагу"',
+    private: true,
     run: async (message, args) => {
         if(Bot.minigamePlayers.flags.some(item => { return (item.uid === message.author.id && item.cid === message.channel.id) })) return Bot.err("Ты уже запустил игру в этом канале");
         Bot.minigamePlayers.flags.push({"uid": message.author.id, "cid": message.channel.id});
