@@ -10,7 +10,7 @@
         toMoscowTime: time => time.toLocaleString('ru-RU', {timeZone: 'Europe/Moscow', hour12: false}).replace(/\/|\./g, '-'),
 
         multipleReact: async (message, arr) => {
-          if (0 in arr) await message.react(arr.shift()).then(() => multipleReact(message, arr).catch());
+          if (0 in arr) await message.react(arr.shift()).then(() => module.exports.multipleReact(message, arr).catch());
         },
 
         addCommas: (int) => int.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
