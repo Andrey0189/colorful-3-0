@@ -148,7 +148,7 @@ module.exports = {
           const tenToZero = (xBot === 10? 0 : xBot);
           const embed = new Bot.Discord.MessageEmbed()
           .setTitle('Результаты хода')
-          .setColor(Cofnig.colors.blurple);
+          .setColor(Config.colors.blurple);
           let plrRes = 'Мимо';
           let botRes = 'Мимо';
 
@@ -181,7 +181,8 @@ module.exports = {
       } else if (msg.content.toLowerCase() === 'stop' || Bot.prefixes.find(p => msg.content.startsWith(p))) return msg.reply(`Игра успешно остановлена`)
         else {
           move(arr1, arr2, field, attacked1, attacked2);
-          return msg.delete(2e4);
+          setTimeout(() => msg.delete(), 2e4);
+          return;
         };
       })
     };
