@@ -46,11 +46,11 @@ module.exports = {
     const animated = guild.emojis.cache.filter(e => e.animated).size;
     const static = guild.emojis.cache.size - animated;
 
-    let desc = `Создан **${Bot.toMoscowTime(guild.createdAt)}**\n`
+    let desc = `Создан **${Func.toMoscowTime(guild.createdAt)}**\n`
     if (!args[0]) desc += `Вы зашли сюда: **${Bot.toMoscowTime(message.member.joinedAt)}\n**`
     //desc += `Владелец: ${owner} **\`${owner.tag}\`**\n\n`;
     desc += `Участников: **\`${guild.memberCount}\`**\n`;
-    desc += `${Bot.emojis.online} \`${online}\` | ${Bot.emojis.dnd} \`${dnd}\` | ${Bot.emojis.idle} \`${idle}\` | ${Bot.emojis.offline} \`${offline}\`\n`;
+    desc += `${Config.emojis.online} \`${online}\` | ${Config.emojis.dnd} \`${dnd}\` | ${Config.emojis.idle} \`${idle}\` | ${Config.emojis.offline} \`${offline}\`\n`;
     desc += `🌐 \`${browser}\` | 🖥️ \`${desktop}\` | 📱 \`${mobile}\` | ❔ \`${unknown}\`\n`;
     desc += `👤 \`${people}\` | 🤖 \`${bots}\`\n\n`;
     desc += `Каналов: **\`${text + voice}\`**\n`;
@@ -63,7 +63,7 @@ module.exports = {
 
     const embed = new Bot.Discord.MessageEmbed()
     .setAuthor(guild.name, message.author.avatarURL())
-    .setColor(Bot.colors.main)
+    .setColor(Config.colors.blurple)
     .setThumbnail(guild.iconURL({size: 1024, dynamic: true}))
     .setDescription(desc)
     await message.channel.send(embed);

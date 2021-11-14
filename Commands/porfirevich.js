@@ -16,7 +16,7 @@ module.exports = {
 
           const gen = await res.json();
 
-          if (!gen.error && res.ok) return Bot.randomElement(gen['replies']);
+          if (!gen.error && res.ok) return Func.randomElement(gen['replies']);
           else return 'Ошибка API';
         };
 
@@ -26,10 +26,10 @@ module.exports = {
         let embed = new Bot.Discord.MessageEmbed()
         .setTitle('Генерация Текста')
         .setDescription(`**${startedText}** ${generated}`)
-        .setColor(Bot.colors.blurple)
+        .setColor(Config.colors.blurple)
         .setFooter('Порфирьевич', 'https://media.discordapp.net/attachments/520187790282063873/906998259233460284/porf.png')
         const botsMsg = await message.channel.send(embed);
-        await Bot.multipleReact(botsMsg, ['🔁', '⏭️']);
+        await Func.multipleReact(botsMsg, ['🔁', '⏭️']);
 
         const reactCollector = new Bot.Discord.ReactionCollector(botsMsg, (reaction, user) => user.id === message.author.id, {time: 3e5});
 

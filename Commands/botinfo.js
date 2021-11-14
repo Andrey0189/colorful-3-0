@@ -3,7 +3,7 @@ module.exports = {
   regex: /info/,
   desc: 'Информация о боте',
   run: async (message) => {
-    const creators = Bot.creators.map(id => `**${Bot.client.users.cache.get(id)}, \`${Bot.client.users.cache.get(id).tag}\`**`);
+    const creators = Config.creators.map(id => `**${Bot.client.users.cache.get(id)}, \`${Bot.client.users.cache.get(id).tag}\`**`);
 
     const embed = new Bot.Discord.MessageEmbed()
     .setAuthor('Информация о боте', Bot.client.user.avatarURL())
@@ -11,7 +11,7 @@ module.exports = {
     .addField('Разработчики', creators.join('\n'))
     .setTitle('Пригласить бота')
     .setURL(`https://discordapp.com/oauth2/authorize?client_id=${Bot.client.user.id}&scope=bot&permissions=608037953`)
-    .setColor(Bot.colors.blurple);
+    .setColor(Config.colors.blurple);
     await message.channel.send(embed);
   }
 };

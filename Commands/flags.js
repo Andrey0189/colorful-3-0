@@ -6,7 +6,7 @@ module.exports = {
     run: async (message, args) => {
         if(Bot.minigamePlayers.flags.some(item => { return (item.uid === message.author.id && item.cid === message.channel.id) })) return Bot.err("Ты уже запустил игру в этом канале");
         Bot.minigamePlayers.flags.push({"uid": message.author.id, "cid": message.channel.id});
-        
+
         function removePlayerFromList() {
             function arrFilter(item) {
                 return (item.uid !== message.author.id && item.cid !== message.channel.id)
@@ -16,14 +16,14 @@ module.exports = {
 
         var flagcount = parseInt(args[0]);
         if(!args[0] || isNaN(flagcount) || flagcount < 2 || flagcount > 10) { flagcount = 3 };
-        
+
         function colFilter(input) {
             const parsedInput = parseInt(input)
             if(isNaN(parsedInput) || parsedInput < 1 || parsedInput > flagcount) return false;
             return true;
         }
 
-        const countrylist = require("../countries.json");
+        const countrylist = Flags.list;
         function getRandCountry() {
             return countrylist[Math.floor(Math.random() * countrylist.length)]
         }
@@ -39,14 +39,14 @@ module.exports = {
         var countrysts = [];
         countryarr.forEach(country => countrysts.push((countryarr.indexOf(country) + 1).toString() + ". :flag_" + country.code + ":"));
         const ctoguess = countryarr[Math.floor(Math.random() * countryarr.length)];
-        
+
         const embed = new Bot.Discord.MessageEmbed()
             .setTitle("Где " + ctoguess.name + "?")
             .setDescription(countrysts.join("\n"))
             .setFooter("Отправьте номер ответа в чат")
             .setColor(Bot.colors.blurple)
         message.channel.send(embed);
-        
+
         const collector = new Bot.Discord.MessageCollector(message.channel, colFilter);
         const guessTimeout = setTimeout(() => {
             const timeembed = new Bot.Discord.MessageEmbed()

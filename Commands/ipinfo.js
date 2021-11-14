@@ -24,7 +24,7 @@ module.exports = {
                     .addField("Почтовый код", ipinfo.postal ? ipinfo.postal : "Нету", true)
                     .addField("Временная зона", ipinfo.timezone ? ipinfo.timezone : "Нету", true)
                     .setImage("https://tyler-demo.herokuapp.com/?greyscale=False&lat=" + coordsForMap[0] + "&lon=" + coordsForMap[1] + "&zoom=15&width=600&height=400")
-                    .setColor(Bot.colors.blurple)
+                    .setColor(Config.colors.blurple)
                 await message.channel.send(embed)
             } else {
                 await message.channel.send("Ошибка API")

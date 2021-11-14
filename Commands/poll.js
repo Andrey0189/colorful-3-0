@@ -27,7 +27,7 @@ module.exports = {
     message.channel.send(`**:bar_chart: ${question.trim()}**\n\n${variants}\n**Автор голосования - \`${message.author.tag}\`**`).catch(msg => {
       Bot.err('Лимит символов превышен. Пожалуйста, сделайте голосование более компактным');
     }).then(msg => {
-      Bot.multipleReact(msg, reactArray);
+      Func.multipleReact(msg, reactArray);
     });
   }
 };

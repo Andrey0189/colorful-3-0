@@ -12,7 +12,7 @@ module.exports = {
                 const embed = new Bot.Discord.MessageEmbed()
                     .setTitle("Анекдот")
                     .setDescription(anek.slice(0, 4096))
-                    .setColor(Bot.colors.blurple)
+                    .setColor(Config.colors.blurple)
                 await message.channel.send(embed)
             } else {
                 await message.channel.send("Ошибка API")

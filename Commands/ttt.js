@@ -75,7 +75,7 @@ module.exports = {
       const testField = field.join().split(',');
       const edges = [1, 3, 7, 9];
       const lines = [2, 4, 6, 8];
-      let move = Bot.randomElement(edges.filter(n => !(n - 1 in field))) || Bot.randomElement(lines.filter(n => !(n - 1 in field)))
+      let move = Func.randomElement(edges.filter(n => !(n - 1 in field))) || Func.randomElement(lines.filter(n => !(n - 1 in field)))
       testField.forEach((c, index) => {
         if (!c) {
           testField[index] = 'X';
@@ -112,7 +112,7 @@ module.exports = {
       if (!tttText.match(/ты п|ничья/i)) checkingForEnd()
       await msgTtt.edit(`**${tttText}\n${tttText2}\n${arrToMsg(field)}**`);
       if (tttText.match(/ты п|ничья/i)) return;
-      // Bot.sendIn('661540288690651138', `**${arrToMsg(field)}**`);
+
       const timer = setTimeout(() => {
         return message.channel.send('Время вышло! Я победил 😎');
       }, 6e4);
