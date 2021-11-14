@@ -1,6 +1,6 @@
 module.exports = {
     name: 'flags',
-    regex: /flag(s)?|andreygay/,
+    regex: /flag(s)?/,
     args: ['[количество флагов от 2 до 10 (по умолчанию 3)]'],
     desc: 'Миниигра "Угадай страну по флагу"',
     run: async (message, args) => {
