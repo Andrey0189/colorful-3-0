@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 
 const Config = require('./Config/main-config.js');
-const Flags = require('./Config/Flags.js');
+const Flags = require('./Config/flags-game.js');
 const Func = require('./Config/functions.js');
 
 /** @namespace process.env.DISCORD_TOKEN */
