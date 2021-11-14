@@ -1,4 +1,4 @@
-    {
+      module.exports = {
 
         declOfNum: (number, titles) => {
             const cases = [2, 0, 1, 1, 1, 2];
