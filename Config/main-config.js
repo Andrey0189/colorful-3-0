@@ -30,5 +30,15 @@
             online: '<:online:905584347388715048>',
             idle: '<:idle:905584270876229662>',
             dnd: '<:dnd:905584225544208385>'
+        },
+
+        images: {
+          sb: {
+                field: 'https://cdn.discordapp.com/attachments/524159437464797184/526470930721931265/seabattleField.png',
+                ship: 'https://cdn.discordapp.com/attachments/524159437464797184/526470967237672960/ship.png',
+                cross: 'https://cdn.discordapp.com/attachments/524159437464797184/526471033104891905/redCross.png',
+                dot: 'https://cdn.discordapp.com/attachments/524159437464797184/526471615387795466/dot.png',
+                blast: 'https://cdn.discordapp.com/attachments/524159437464797184/526493484543246348/blast.png',
+            },
         }
     }

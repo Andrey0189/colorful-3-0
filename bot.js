@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
+const jimp = require('jimp');
 
 const Config = require('./Config/main-config.js');
 const Flags = require('./Config/flags-game.js');
@@ -13,6 +14,7 @@ class Bot {
 
         this.Discord = Discord;
         this.fs = fs;
+        this.jimp = jimp;
 
         this.client = new Discord.Client({disableMentions: 'everyone'});
         this.client.login('NDcyMDQ4MzgzMDc1NTQ5MTg2.W1nbUA.NK4aC5OOBXCWD7g2cDfivk4iNag');

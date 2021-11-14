@@ -5,7 +5,11 @@
             return titles[(number % 100 > 4 && number % 100 < 20)? 2 : cases[(number % 10 < 5)? number % 10 : 5]];
         },
 
+        random: (min, max) => Math.floor(Math.random() * (max + 1 - min)) + min,
+
         randomElement: arr => arr[Math.ceil(Math.random() * arr.length - 1)],
+
+        randomBoolean: () => Math.random() > 0.5? true : false,
 
         toMoscowTime: time => time.toLocaleString('ru-RU', {timeZone: 'Europe/Moscow', hour12: false}).replace(/\/|\./g, '-'),
 
