@@ -133,6 +133,16 @@ class Bot {
                 _this.client.channels.cache.get(_this.channels.commands).send(embed);
             }
         });
+
+        // ВРЕМЕННЫЙ КОД
+        this.client.on("guildMemberAdd", async member => {
+            if(member.guild.id !== "847322841258262559") return;
+            try {
+                await member.send('Just a reminder for all the newcomers who came after the beginning of Russian invasion of Ukraine - we are not am embassy of Russia, nor we are an official representative of Russia in Discord, stop saying dumb things like "stop invasion of ukraine" or "yuo imperatils mozafukers usa gonna fuk u all 🇱🇷", you\'re going to get banned');
+            } catch(err) {
+                this.err(err);
+            }
+        })
     };
 }
 
